@@ -3,8 +3,7 @@ package practice.login.sessionstarter.domain.login;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import practice.login.sessionstarter.domain.members.MemberRepository;
-import practice.login.sessionstarter.dtos.MemberDto;
-import practice.login.sessionstarter.exceptions.ResourceNotFoundException;
+import practice.login.sessionstarter.domain.members.MemberDto;
 
 /**
  * Created by Yoo Ju Jin(jujin1324@daum.net)

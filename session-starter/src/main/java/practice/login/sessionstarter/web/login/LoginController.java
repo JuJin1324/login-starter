@@ -8,8 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import practice.login.sessionstarter.domain.login.LoginService;
-import practice.login.sessionstarter.dtos.MemberDto;
-import practice.login.sessionstarter.exceptions.ResourceNotFoundException;
+import practice.login.sessionstarter.domain.members.MemberDto;
 import practice.login.sessionstarter.web.SessionConst;
 
 import javax.servlet.http.HttpServletRequest;

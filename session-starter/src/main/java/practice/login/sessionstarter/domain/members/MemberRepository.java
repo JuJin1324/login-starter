@@ -1,6 +1,6 @@
 package practice.login.sessionstarter.domain.members;
 
-import practice.login.sessionstarter.repositories.CommonRepository;
+import practice.login.sessionstarter.domain.repositories.CommonRepository;
 
 import java.util.List;
 import java.util.Optional;

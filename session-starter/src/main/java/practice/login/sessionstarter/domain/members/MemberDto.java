@@ -1,10 +1,9 @@
-package practice.login.sessionstarter.dtos;
+package practice.login.sessionstarter.domain.members;
 
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import practice.login.sessionstarter.domain.members.Member;
 
 /**
  * Created by Yoo Ju Jin(jujin1324@daum.net)

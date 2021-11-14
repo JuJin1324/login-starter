@@ -1,6 +1,5 @@
-package practice.login.sessionstarter.repositories;
+package practice.login.sessionstarter.domain.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.data.repository.Repository;
 

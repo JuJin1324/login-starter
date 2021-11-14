@@ -9,7 +9,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import practice.login.sessionstarter.domain.items.ItemService;
-import practice.login.sessionstarter.dtos.ItemDto;
+import practice.login.sessionstarter.domain.items.ItemDto;
 import practice.login.sessionstarter.web.item.form.ItemSaveForm;
 import practice.login.sessionstarter.web.item.form.ItemUpdateForm;
 

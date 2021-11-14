@@ -5,7 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import practice.login.sessionstarter.dtos.MemberDto;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import practice.login.sessionstarter.domain.members.MemberDto;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,12 +17,11 @@ import javax.servlet.http.HttpSession;
 public class HomeController {
 
     @GetMapping("/")
-    public String homeLogin(HttpServletRequest request, Model model) {
-        HttpSession session = request.getSession(false);
-        if (session == null) {
+    public String homeLogin(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) MemberDto loginMember,
+                            Model model) {
+        if (loginMember == null) {
             return "home";
         }
-        MemberDto loginMember = (MemberDto) session.getAttribute(SessionConst.LOGIN_MEMBER);
         model.addAttribute("member", loginMember);
         return "loginHome";
     }

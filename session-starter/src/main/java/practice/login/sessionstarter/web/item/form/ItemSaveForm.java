@@ -2,7 +2,7 @@ package practice.login.sessionstarter.web.item.form;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.Range;
-import practice.login.sessionstarter.dtos.ItemDto;
+import practice.login.sessionstarter.domain.items.ItemDto;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.NotBlank;
