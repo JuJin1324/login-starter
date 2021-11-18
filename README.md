@@ -28,12 +28,25 @@
 > Spring Session 의 Timeout 은 기본적으로 마지막 요청 발생 후 타임아웃에 설정된 시간 이후에 세션이 삭제되는 방식으로 동작한다.
 
 ## filter-starter
+### 데이터 흐름
+> HTTP 요청 -> WAS -> 필터 -> 서블릿 -> 컨트롤러
+
 ### 실행
 > 브라우저에 `localhost:8080` -> 로그인 버튼 클릭 -> ID: test / PW: test!
 
-### spring filter 설명
+### servlet filter 설명
 > 로그인한 사용자가 아닌 사용자가 로그인이 필요한 페이지를 URL 로 직접 요청 시 막아주는 역할   
 > filter 가 아닌 Spring AOP 로도 해당 기능 구현이 가능하지만 Filter 가 제공하는 HttpServletRequest 같은 기능들이 더 풍부하기 때문에 
 > filter 사용을 권장한다.
 > 
 > Filter 는 java 의 servlet 기술이기 때문에 package 가 javax.servlet 하위에 있다. 
+
+## interceptor-starter
+### 데이터 흐름
+> HTTP 요청 -> WAS -> 필터 -> 서블릿 -> 인터셉터 -> 컨트롤러
+
+### 실행
+> 브라우저에 `localhost:8080` -> 로그인 버튼 클릭 -> ID: test / PW: test!
+
+### spring interceptor 설명
+> 
