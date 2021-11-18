@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * Created by Yoo Ju Jin(jujin1324@daum.net)
  * Created Date : 2021/11/11
@@ -12,7 +14,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class MemberDto {
+public class MemberDto implements Serializable {
     private Long   id;
     private String loginId;
     private String password;

@@ -1,4 +1,4 @@
-package practice.login.sessionstarter;
+package practice.login.filterstarter;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
