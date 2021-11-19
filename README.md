@@ -72,3 +72,8 @@
 > 5.WebMvcConfigurer 인터페이스 구현  
 > 6.addInterceptors 메서드 오버라이드를 통해서 1에서 생성했던 LogInterceptor 등록
 
+### interceptor 가 filter 보다 나은 점
+> 1.filter 와는 달리 request,response 매개변수를 받을 때 부터 HttpServlet 으로 받는다.  
+> 2.WebConfig 에서 interceptor 등록 시에 excludePathPatterns 을 지정할 수 있다.  
+
+
