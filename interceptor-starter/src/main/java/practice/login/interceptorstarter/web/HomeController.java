@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import practice.login.interceptorstarter.domain.members.MemberDto;
+import practice.login.interceptorstarter.web.argumentresolver.Login;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,8 +18,7 @@ import javax.servlet.http.HttpSession;
 public class HomeController {
 
     @GetMapping("/")
-    public String homeLogin(@SessionAttribute(name = SessionConst.LOGIN_MEMBER, required = false) MemberDto loginMember,
-                            Model model) {
+    public String homeLogin(@Login MemberDto loginMember, Model model) {
         if (loginMember == null) {
             return "home";
         }

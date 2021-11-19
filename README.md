@@ -76,4 +76,17 @@
 > 1.filter 와는 달리 request,response 매개변수를 받을 때 부터 HttpServlet 으로 받는다.  
 > 2.WebConfig 에서 interceptor 등록 시에 excludePathPatterns 을 지정할 수 있다.  
 
+## Argument Resolver
+### 사용처
+> Interceptor 에서 로그인 사용자를 걸러낸 후 컨트롤러 메서드에 로그인 사용자 전달을 매개변수로 편하게 할 수 있음.
+
+### 생성 및 등록 과정
+> 1.web.argumentresolver 패키지에 Login.java annotation 생성  
+> `@Target(ElementType.PARAMETER)`: 컨트롤러 메서드의 파라미터 앞에 붙일 것이기 때문  
+> `@Retention(RetentionPolicy.RUNTIME)`: 런타임 설정을 해야 자바 리플렉션을 통해서 해당 매개변수에 값을 넣어줄 수 있음.    
+> 2.web.argumentresolver 패키지에 LoginMemberArgumentResolver.java 생성  
+> 3.HandlerMethodArgumentResolver 인터페이스 구현    
+> 4.supportsParameter: 1에서 생성한 애노테이션이 매개변수에 붙었는지 확인 및 애노테이션이 붙은 매개변수 타입 중 어떤 타입을 지원할 것인지 여부 반환      
+> 5.resolveArgument: request 객체에서 애노테이션을 붙인 객체를 추출해서 반환  
+> 6.WebConfig 에서 addArgumentResolvers 메서드 오버라이드해서 2에서 생성한 LoginMemberArgumentResolver 등록  
 
