@@ -41,12 +41,19 @@
 > 
 > Filter 는 java 의 servlet 기술이기 때문에 package 가 javax.servlet 하위에 있다. 
 
-### filter 등록 과정
+### filter 가 AOP 보다 나은 점
+> servlet request/response 제공으로 인해서 request URI 및 Header 정보 접근이 용이하다.
+
+### filter 생성
 > 1.web.filter 패키지에 LogFilter.java 파일 생성  
 > 2.javax.servlet.Filter 인터페이스 구현  
 > 3.핵심 메서드는 doFilter 임으로 해당 메서드만 오버라이딩
-> 4.config 패키지에서 WebConfig.java 생성   
-> 6.FilterRegistrationBean<Filter> 을 반환하는 @Bean 등록 메서드를 생성해서 1에서 생성했던 LogFilter 등록
+> 4.외부 서비스 사용이 필요할 시에 LogFilter 위에 @Component 애노테이션을 통해 스프링 빈으로 생성가능   
+> 5.doFilter 마지막에 chain.doFilter 메서드를 호출해서 요청을 컨트롤러로 넘긴다.(doFilter 를 호출하지 않으면 요청이 컨트롤러로 넘어가지 않는다.)
+
+### filter 등록 
+> 1.config 패키지에서 WebConfig.java 생성   
+> 2.FilterRegistrationBean<Filter> 을 반환하는 @Bean 등록 메서드를 생성해서 1에서 생성했던 LogFilter 등록
 
 ## interceptor-starter
 ### 데이터 흐름
@@ -54,6 +61,10 @@
 
 ### 실행
 > 브라우저에 `localhost:8080` -> 로그인 버튼 클릭 -> ID: test / PW: test!
+
+### interceptor 가 filter 보다 나은 점
+> 1.filter 와는 달리 request,response 매개변수를 받을 때 부터 HttpServlet 으로 받는다.  
+> 2.WebConfig 에서 interceptor 등록 시에 excludePathPatterns 을 지정할 수 있다.
 
 ### spring interceptor 설명
 > preHandle: request 가 컨트롤러 메서드를 호출하기 전에 호출되는 메서드  
@@ -64,17 +75,16 @@
 > afterCompletion: request 가 정상처리 되면 postHandler 호출 이후에 호출되며, 비정상 처리되면 바로 호출되는 메서드   
 > 비정상 처리시 호출이 될 수 있음으로 매개변수에 Exception 이 있다.
 
-### interceptor 등록 과정
+### interceptor 생성
 > 1.web.interceptor 패키지에 LogInterceptor.java 파일 생성  
 > 2.HandlerInterceptor 인터페이스 구현  
 > 3.핵심 메서드 preHandle/postHandle/afterCompletion 오버라이딩
-> 4.config 패키지에서 WebConfig.java 생성  
-> 5.WebMvcConfigurer 인터페이스 구현  
-> 6.addInterceptors 메서드 오버라이드를 통해서 1에서 생성했던 LogInterceptor 등록
+> 4.외부 서비스 사용이 필요할 시에 LogInterceptor 위에 @Component 애노테이션을 통해 스프링 빈으로 생성가능
 
-### interceptor 가 filter 보다 나은 점
-> 1.filter 와는 달리 request,response 매개변수를 받을 때 부터 HttpServlet 으로 받는다.  
-> 2.WebConfig 에서 interceptor 등록 시에 excludePathPatterns 을 지정할 수 있다.  
+### interceptor 등록
+> 1.config 패키지에서 WebConfig.java 생성  
+> 2.WebMvcConfigurer 인터페이스 구현  
+> 3.addInterceptors 메서드 오버라이드를 통해서 1에서 생성했던 LogInterceptor 등록
 
 ## Argument Resolver
 ### 사용처
