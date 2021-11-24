@@ -54,6 +54,8 @@
 ### filter 등록 
 > 1.config 패키지에서 WebConfig.java 생성   
 > 2.FilterRegistrationBean<Filter> 을 반환하는 @Bean 등록 메서드를 생성해서 1에서 생성했던 LogFilter 등록
+> 3.LogFilter 의 경우 setDispatcherTypes(DispatcherType.REQUEST, DispatcherType.ERROR) 로 정상/에러 요청에 모두 대응하고 
+> LoginCheckFilter 의 경우 setDispatcherTypes(DispatcherType.REQUEST) 로 정상 요청의 경우에만 대응한다.
 
 ## interceptor-starter
 ### 데이터 흐름

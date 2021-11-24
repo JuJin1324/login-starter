@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import practice.login.filterstarter.web.filter.LogFilter;
 import practice.login.filterstarter.web.filter.LoginCheckFilter;
 
+import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 
 /**
@@ -22,6 +23,7 @@ public class WebConfig {
         filterRegistrationBean.setFilter(new LogFilter());
         filterRegistrationBean.setOrder(1);
         filterRegistrationBean.addUrlPatterns("/*");
+        filterRegistrationBean.setDispatcherTypes(DispatcherType.REQUEST, DispatcherType.ERROR);
 
         return filterRegistrationBean;
     }
@@ -32,6 +34,7 @@ public class WebConfig {
         filterRegistrationBean.setFilter(new LoginCheckFilter());
         filterRegistrationBean.setOrder(2);
         filterRegistrationBean.addUrlPatterns("/*");
+//        filterRegistrationBean.setDispatcherTypes(DispatcherType.REQUEST);  /* Default */
 
         return filterRegistrationBean;
     }
